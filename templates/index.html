@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Salary Predictor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Video background */
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            margin: 50px auto;
+            background-color: rgba(1, 41, 13, 0.6);
+            padding: 30px;
+            border-radius: 12px;
+            color: #fff;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        h3 {
+            text-align: center;
+            margin-top: 20px;
+            color: #e1ffe1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Video background -->
+    <video autoplay muted loop id="bg-video">
+        <source src="background.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <div class="container">
+        <h2>Employee Details</h2>
+        <form method="POST" action="/predict">
+            <label>Age:</label>
+            <input type="number" name="age">
+
+            <label>Workclass:</label>
+            <input type="text" name="workclass">
+
+            <label>Fnlwgt:</label>
+            <input type="number" name="fnlwgt">
+
+            <label>Education:</label>
+            <input type="text" name="education">
+
+            <label>Educational-num:</label>
+            <input type="number" name="educational-num">
+
+            <label>Marital Status:</label>
+            <input type="text" name="marital-status">
+
+            <label>Occupation:</label>
+            <input type="text" name="occupation">
+
+            <label>Relationship:</label>
+            <input type="text" name="relationship">
+
+            <label>Race:</label>
+            <input type="text" name="race">
+
+            <label>Gender:</label>
+            <input type="text" name="gender">
+
+            <label>Capital Gain:</label>
+            <input type="number" name="capital-gain">
+
+            <label>Capital Loss:</label>
+            <input type="number" name="capital-loss">
+
+            <label>Hours per Week:</label>
+            <input type="number" name="hours-per-week">
+
+            <label>Native Country:</label>
+            <input type="text" name="native-country">
+
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if prediction_text %}
+            <h3>{{ prediction_text }}</h3>
+        {% endif %}
+    </div>
+
+</body>
+</html>
